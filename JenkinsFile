@@ -1,13 +1,14 @@
-
-stages {
-        stage('build') {
-            steps {
-                sh 'javac HelloWorld.java'
-            }
-        }
+pipeline {
+	stages {
+        	stage('build') {
+            		steps {
+                		sh 'javac HelloWorld.java'
+            		}
+        	}
 		stage('test') {
 			steps {
-                sh 'java HelloWorld'
-            }
+                		sh 'java HelloWorld'
+            		}
 		}
+	}
 }
