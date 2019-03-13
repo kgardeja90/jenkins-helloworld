@@ -1,5 +1,5 @@
 pipeline {
-	node('docker-cloud') {
+	node('demoAgent') {
 		stages {
 				stage('build') {
 						steps {
