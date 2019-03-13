@@ -6,6 +6,6 @@ node('docker-slave') {
 		sh 'javac *.java && mkdir build && jar cfm ./build/HelloWorld.jar Manifest.txt HelloWorld.class'
 	}
 	stage('test') {
-		sh 'java -jar HelloWorld.jar'
+		sh 'cd build && java -jar HelloWorld.jar'
 	}	
 }
