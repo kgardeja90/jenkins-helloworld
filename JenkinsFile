@@ -1,14 +1,16 @@
 pipeline {
-	stages {
-        	stage('build') {
-            		steps {
-                		sh 'javac HelloWorld.java'
-            		}
-        	}
-		stage('test') {
-			steps {
-                		sh 'java HelloWorld'
-            		}
+	node('docker-cloud') {
+		stages {
+				stage('build') {
+						steps {
+							sh 'javac HelloWorld.java'
+						}
+				}
+				stage('test') {
+					steps {
+						sh 'java HelloWorld'
+					}
+				}
 		}
 	}
 }
