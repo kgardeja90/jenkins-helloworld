@@ -1,9 +1,11 @@
 node('docker-slave') {
-	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/kgardeja90/jenkins-helloworld.git']]])
-		stage('build') {
-			sh 'javac HelloWorld.java'
-		}
-		stage('test') {
-			sh 'java HelloWorld'
-		}	
+	stage('checkout') {
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/kgardeja90/jenkins-helloworld.git']]])
+	}
+	stage('build') {
+		sh 'javac HelloWorld.java'
+	}
+	stage('test') {
+		sh 'java HelloWorld'
+	}	
 }
