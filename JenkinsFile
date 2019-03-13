@@ -1,4 +1,4 @@
-node('demoAgent') {
+node('docker-slave') {
 			stage('build') {
 						sh 'javac HelloWorld.java'
 			}
