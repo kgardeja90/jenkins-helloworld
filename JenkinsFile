@@ -11,4 +11,7 @@ node('docker-slave') {
 	stage('archive') {
 		archiveArtifacts 'build/HelloWorld.jar'
 	}
+	stage ('deploy') {
+		def helloImage = sh 'docker build -t kgardeja/helloWorld:demo2 .'
+	}
 }
