@@ -16,7 +16,7 @@ node('docker-slave') {
 	}
 	stage ('deploy test') {
 		sh 'docker run --name helloworld kgardeja/helloworld:demo2'
-		sh 'docker exec -it helloworld bash'
+		sh 'docker exec helloworld bash'
 		sh 'cd ~/build/ && ls'
 	}
 }
