@@ -15,7 +15,9 @@ node('docker-slave') {
 		def helloImage = sh 'docker build -t kgardeja/helloworld:demo2 .'
 	}
 	stage ('deploy test') {
-		sh 'docker run --name helloworld kgardeja/helloworld:demo2'
+		sh 'docker stop helloworld'
+		sh 'docker rm helloworld'
+		sh 'docker run --name=helloworld --restart=always'
 		sh 'docker exec helloworld bash'
 		sh 'cd ~/build/ && ls'
 	}
