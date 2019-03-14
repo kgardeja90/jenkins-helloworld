@@ -9,6 +9,6 @@ node('docker-slave') {
 		sh 'cd build && java -jar HelloWorld.jar'
 	}
 	stage('archive'){
-		sh 'archiveArtifacts 'build/*.jar'
+		sh 'archiveArtifacts 'build/HelloWorld.jar'
 	}
 }
