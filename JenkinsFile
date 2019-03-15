@@ -12,8 +12,10 @@ node('docker-slave') {
 		archiveArtifacts 'build/HelloWorld.jar'
 	}
 	stage ('deploy') {
-		def helloImage = sh 'docker build -t kgardeja/helloworld:demo2 .'
+		sh 'docker build -t kgardeja/helloworld:demo2 .'
 		sh 'az login -u bastian.ulke@steeleurope.onmicrosoft.com -p FrankTheTank!'
 		sh 'az acr login --name steelapiregistry'
+		sh 'docker tag kgardeja/helloworld:demo2 steelapiregistry.azurecr.io/kgardeja/helloworld:demo2'
+		sh 'docker push steelapiregistry.azurecr.io/kgardeja/helloworld:demo2'
 	}
 }
