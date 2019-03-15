@@ -13,7 +13,7 @@ node('docker-slave') {
 	}
 	stage ('deploy') {
 		def helloImage = sh 'docker build -t kgardeja/helloworld:demo2 .'
-		az login -u bastian.ulke@steeleurope.onmicrosoft.com -p FrankTheTank!
-		az acr login --name steelapiregistry
+		sh 'az login -u bastian.ulke@steeleurope.onmicrosoft.com -p FrankTheTank!'
+		sh 'az acr login --name steelapiregistry'
 	}
 }
